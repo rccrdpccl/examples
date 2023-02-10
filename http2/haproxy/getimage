@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wget -O testimage 'https://api.openshift.com/api/assisted-images/boot-artifacts/rootfs?arch=x86_64&version=4.12'

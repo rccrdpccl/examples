@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  haproxy:
+    image: haproxy:2.2.24
+    volumes:
+      - ./example-cert/mycert.pem:/etc/https/mycert.pem
+      - ./haproxy.cfg://usr/local/etc/haproxy/haproxy.cfg
+    ports:
+      - 8443:443
+  service-http:
+    image: nginx:alpine
+    volumes:
+      - ./hello:/app/static/hello
+      - ./testimage:/app/static/testimage
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    hostname: service-http
